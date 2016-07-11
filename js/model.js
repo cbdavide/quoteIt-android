@@ -10,12 +10,9 @@ const packageQuotes = function(arr) {
   return arr.map((data) => {
 
     let body = JSON.parse(data[1]);
+    body.id = data[0];
 
-    return {
-      id: data[0],
-      quote: body.quote,
-      author: body.author
-    };
+    return body;
   })
 }
 
@@ -23,9 +20,9 @@ const db = {
 
   saveQuote: function(quote) {
 
-    let {id, quoteText, quoteAuthor} = quote;
+    let {quoteLink, quoteText, quoteAuthor} = quote;
 
-    AsyncStorage.setItem(id, JSON.stringify({
+    AsyncStorage.setItem(quoteLink, JSON.stringify({
       quote: quoteText,
       author: quoteAuthor
     }));
