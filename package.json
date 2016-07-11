@@ -10,8 +10,8 @@
     "react": "15.2.0",
     "react-native": "0.29.0"
   },
-  "repository" :
-  { "type" : "git"
-  , "url" : "https://github.com/cbdavide/quoteIt-android.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cbdavide/quoteIt-android.git"
   }
 }
