@@ -1,25 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native'
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'rgba(0,153,255,0.7)',
-    marginBottom: 10,
-    marginRight: 10,
-    marginLeft: 10,
-    padding: 10
-  },
-  text: {
-    color: 'white'
-  },
-  quote: {
-    textAlign: 'center',
-  },
-  author: {
-    textAlign: 'right',
-    marginTop: 10
-  }
-});
+import style from './styles';
 
 class Quote extends Component {
 
@@ -29,9 +10,13 @@ class Quote extends Component {
 
   render() {
     return(
-      <View style={styles.container}>
-        <Text style={[styles.text, styles.quote]}>{this.props.quote}</Text>
-        <Text style={[styles.text, styles.author]}>{'— ' + this.props.author}</Text>
+      <View style={style.quote_box}>
+        <Text style={[style.text, style.quote_text]}>
+          {this.props.quote}
+        </Text>
+        <Text style={[style.text, style.quote_author]}>
+          {'— ' + this.props.author}
+        </Text>
       </View>
     );
   }
