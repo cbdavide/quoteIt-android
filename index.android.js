@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, View, ScrollView, Image} from 'react-native';
 import Quote from './js/Quote';
+import Header from './js/header';
 import style from './js/styles';
 import core from './js/controller';
 
-class MyComponent extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {quotes: []};
@@ -28,18 +29,7 @@ class MyComponent extends Component {
 
     return (
       <Image source={require('./img/background.jpg')} style={style.container}>
-        <View style={style.header}>
-          <View style={style.header_content}>
-            <Text style={[style.text, style.header_content_text]}>
-              Quote It
-            </Text>
-          </View>
-          <View style={style.header_control}>
-            <Text style={[style.text, style.header_control_text]}>
-              +
-            </Text>
-          </View>
-        </View>
+				<Header />
         <ScrollView>
           {quotes}
         </ScrollView>
@@ -48,4 +38,4 @@ class MyComponent extends Component {
   }
 }
 
-AppRegistry.registerComponent('quotesAndroid', () => MyComponent);
+AppRegistry.registerComponent('quotesAndroid', () => App);
