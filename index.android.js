@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, View, ScrollView, Image} from 'react-native';
 import Quote from './js/Quote';
-import data from './js/data';
-import style from './js/styles.js';
+import style from './js/styles';
+import core from './js/controller';
 
 class MyComponent extends Component {
   constructor(props) {
     super(props);
+    this.state = {quotes: []};
+  }
+
+  componentWillMount() {
+    core.getQuotes()
+      .then(q => {
+        this.setState(old => {
+          return {quotes: q};
+        })
+      })
   }
 
   render() {
-    let quotes = data.map((data) => {
+    let quotes = this.state.quotes.map((data) => {
       return (
-        <Quote quote={data.quote} author={data.author} key={data.id}>
-        </Quote>
+        <Quote quote={data.quote} author={data.author} key={data.id} />
       );
     })
 
