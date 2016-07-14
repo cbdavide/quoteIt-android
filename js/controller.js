@@ -11,17 +11,8 @@ export default {
    * returns a promise which resolves with the quote(json)
    */
   downloadQuote: function() {
-    return new Promise((reject, resolve) => {
-
-      fetch(route + options)
+      return fetch(route + options)
         .then(res => res.json())
-        .then(json => {
-          resolve(json);
-        })
-        .catch(err => {
-          reject(err);
-        })
-    })
   },
   /*
    * Get all the quotes saved in the device

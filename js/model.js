@@ -35,20 +35,13 @@ const db = {
 
   getAllQuotes: function() {
     let quotes = [];
-
-    return new Promise((reject, resolve) => {
-
-      this.getAllQuotesIds()
-        .then((keys) => {
-          AsyncStorage.multiGet(keys)
-            .then((quotes) => {
-              resolve(packageQuotes(quotes));
-            })
-            .catch((err) => {
-              reject(err);
-            })
-        });
-    });
+    return this.getAllQuotesIds()
+      .then((keys) => {
+        return AsyncStorage.multiGet(keys);
+      })
+      .then(quotes => {
+        return packageQuotes(quotes)
+      }); 
   }
 }
 
