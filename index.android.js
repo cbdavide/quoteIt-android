@@ -9,6 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {quotes: []};
+		this.addQuote = this.addQuote.bind(this);
   }
 
   componentWillMount() {
@@ -20,6 +21,25 @@ class App extends Component {
       })
   }
 
+	addQuote() {
+		core.downloadQuote()
+			.then(quote => {
+
+				this.setState(old => {
+					old.quotes.unshift({
+						id: quote.quoteLink,
+						quote: quote.quoteText,
+						author: quote.quoteAuthor
+					});					
+				});
+
+			})
+			.catch(err => {
+				//TODO Handle this error in a proper way
+				console.log(err);
+			});
+	}
+
   render() {
     let quotes = this.state.quotes.map((data) => {
       return (
@@ -29,7 +49,7 @@ class App extends Component {
 
     return (
       <Image source={require('./img/background.jpg')} style={style.container}>
-				<Header />
+				<Header add={this.addQuote}/>
         <ScrollView>
           {quotes}
         </ScrollView>

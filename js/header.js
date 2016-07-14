@@ -12,7 +12,8 @@ class Header extends Component {
           </Text>
         </View>
         <View style={style.header_control}>
-      		<Text style={[style.text, style.header_control_text]}>
+      		<Text style={[style.text, style.header_control_text]}
+								onPress={this.props.add}>
           	+
 					</Text>
         </View>
